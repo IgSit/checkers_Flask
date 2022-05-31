@@ -1,0 +1,12 @@
+{
+  "application_mode": "",
+  "max_inactivity": 1,
+  "reset_database": true,
+
+  "database":  {
+    "user": "",
+    "password": "",
+    "host": "",
+    "name": ""
+  }
+}

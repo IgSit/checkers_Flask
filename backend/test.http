@@ -1,0 +1,151 @@
+
+@host = kwlodek.pythonanywhere.com
+@username = "1"
+@password = "1"
+@room_id = 1
+
+
+## SIGN UP
+POST http://{{host}}/sign-up HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": {{username}},
+    "password": {{password}},
+    "confirm_password": {{password}}
+}
+
+### SIGN IN
+# @name sign_in
+POST http://{{host}}/sign-in HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": {{username}},
+    "password": {{password}}
+}
+
+###
+
+@session_id = {{sign_in.response.body.$.data.session_id}}
+@token = {{sign_in.response.body.$.data.$.token}}
+@user_id = {{sign_in.response.body.$.data.$.user_id}}
+
+### IS AUTHENTICATED
+POST http://{{host}}/is-authenticated HTTP/1.1
+Content-Type: application/json
+
+{
+    "session_id": "{{session_id}}",
+    "token": "{{token}}",
+    "user_id": {{user_id}}
+}
+
+### SIGN OUT
+POST http://{{host}}/sign-out HTTP/1.1
+Content-Type: application/json
+
+{
+    "session_id": "{{session_id}}",
+    "token": "{{token}}",
+    "user_id": {{user_id}}
+}
+
+###
+
+### SHOW ROOMS
+POST http://{{host}}/rooms HTTP/1.1
+Content-Type: application/json
+
+{
+    "session_id": "{{session_id}}",
+    "token": "{{token}}",
+    "user_id": {{user_id}}
+}
+
+### SHOW ROOM
+POST http://{{host}}/show-room HTTP/1.1
+Content-Type: application/json
+
+{
+    "session_id": "{{session_id}}",
+    "token": "{{token}}",
+    "user_id": {{user_id}},
+    "room_id": {{room_id}}
+}
+
+### CREATE ROOM
+POST http://{{host}}/create-room HTTP/1.1
+Content-Type: application/json
+
+{
+    "session_id": "{{session_id}}",
+    "token": "{{token}}",
+    "user_id": {{user_id}}
+}
+
+### MANAGE PLACES
+POST http://{{host}}/manage-places HTTP/1.1
+Content-Type: application/json
+
+{
+    "session_id": "{{session_id}}",
+    "token": "{{token}}",
+    "user_id": {{user_id}},
+    "room_id": {{room_id}}
+}
+
+### START GAME
+POST http://{{host}}/start-game HTTP/1.1
+Content-Type: application/json
+
+{
+    "session_id": "{{session_id}}",
+    "token": "{{token}}",
+    "user_id": {{user_id}},
+    "room_id": {{room_id}}
+}
+
+### MOVE
+POST http://{{host}}/start-game HTTP/1.1
+Content-Type: application/json
+
+{
+    "session_id": "{{session_id}}",
+    "token": "{{token}}",
+    "user_id": {{user_id}},
+    "figure_id": 15,
+    "row": 6,
+    "col": 4
+}
+
+### END GAME
+POST http://{{host}}/end-game HTTP/1.1
+Content-Type: application/json
+
+{
+    "session_id": "{{session_id}}",
+    "token": "{{token}}",
+    "user_id": {{user_id}},
+    "room_id": {{room_id}}
+}
+
+### ACCOUNT DATA
+POST http://{{host}}/account-data HTTP/1.1
+Content-Type: application/json
+
+{
+    "session_id": "{{session_id}}",
+    "token": "{{token}}",
+    "user_id": {{user_id}}
+}
+
+### RANKINGS
+POST http://{{host}}/rankings HTTP/1.1
+Content-Type: application/json
+
+{
+    "session_id": "{{session_id}}",
+    "token": "{{token}}",
+    "user_id": {{user_id}}
+}
